@@ -9,7 +9,7 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
-  system.includeBuildDependencies = true;
+  system.includeBuildDependencies = lib.mkForce false;
   #nixpkgs.system = "x86_64-linux";
 
   networking = {
@@ -31,7 +31,7 @@
       luks.devices."crypted".device = "/dev/disk/by-uuid/96ce0bc2-93c0-4b1a-b807-4b5a958e5c01";
     };
     kernelModules = ["kvm-intel"];
-    extraModulePackages = with config.boot.kernelPackages; [inputs.fuyu-no-nur.packages.x86_64-linux.samsung-galaxybook-extras];
+    extraModulePackages = with config.boot.kernelPackages; [inputs.icebox.packages.x86_64-linux.samsung-galaxybook-extras];
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
       "acpi_backlight=vendor"

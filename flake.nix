@@ -1,8 +1,8 @@
 {
-  description = "NixOS configuration that follows fuyu-no-kosei.";
+  description = "NixOS configuration that follows fuyu-no-frostbite.";
   outputs = inputs @ {
     flake-parts,
-    kosei,
+    frostbite,
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;}
@@ -37,16 +37,16 @@
       };
 
       flake = {
-        nixosConfigurations = kosei.lib.loadConfigurations "scoped" {
+        nixosConfigurations = frostbite.lib.loadConfigurations "scoped" {
           inherit (self) outPath;
-          inputs = self.inputs // self.inputs.kosei.inputs;
+          inputs = self.inputs // self.inputs.frostbite.inputs;
           src = ./src/systems;
         };
       };
     });
 
   inputs = {
-    kosei.url = "github:TahlonBrahic/fuyu-no-kosei";
+    frostbite.url = "github:cryomancy/frostbite";
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 }

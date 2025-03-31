@@ -9,14 +9,14 @@
 
   perSystem = {pkgs, ...}: {
     devshells.default = {
-      name = "Kosei Development Shell";
+      name = "Frostbite Development Shell";
       devshell.prj_root_fallback = {
         # Use the top-level directory of the working tree
         eval = "$(git rev-parse --show-toplevel)";
       };
 
       motd = ''
-        {117}❄ Kosei Developement Shell ❄{reset}
+        {117}❄ Frostbite Developement Shell ❄{reset}
         $(type -p menu &>/dev/null && menu)
       '';
       env = [
@@ -50,8 +50,8 @@
         }
         {
           name = "update";
-          command = "nix flake update kosei";
-          help = "Pull upstream flake inputs from Kosei";
+          command = "nix flake update frostbite";
+          help = "Pull upstream flake inputs from Frostbite";
         }
       ];
       packages = [
