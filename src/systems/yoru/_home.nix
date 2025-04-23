@@ -3,16 +3,9 @@
     backupFileExtension = lib.mkForce "temp";
     users = {
       "tahlon" = {
-        programs.broot.enable = lib.mkForce false;
-        #services.gammastep = {
-        #  longitude = -85.00;
-        #  latitude = 40.00;
-        #  provider = "manual";
-        #};
+        stylix.targets.hyprpaper.enable = lib.mkForce false;
         frostbite = {
-          #arduino.enable = true;
           browser.firefox.enable = true;
-
           shells.bash.enable = false;
           programs = {
             git = {

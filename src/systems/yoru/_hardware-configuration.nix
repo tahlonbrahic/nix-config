@@ -10,19 +10,10 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
   system.includeBuildDependencies = lib.mkForce false;
-  #nixpkgs.system = "x86_64-linux";
 
   networking = {
     hostName = "yoru";
   };
-
-  #system.etc.overlay = {
-  #  enable = lib.mkForce false;
-  #  mutable = lib.mkforce true;
-  #};
-  #systemd.tmpfiles.rules = [
-  #  "d /etc/resolv.conf 0777 root root"
-  #];
 
   boot = {
     initrd = {
@@ -31,7 +22,7 @@
       luks.devices."crypted".device = "/dev/disk/by-uuid/96ce0bc2-93c0-4b1a-b807-4b5a958e5c01";
     };
     kernelModules = ["kvm-intel"];
-    extraModulePackages = with config.boot.kernelPackages; [inputs.icebox.packages.x86_64-linux.samsung-galaxybook-extras];
+    # extraModulePackages = with config.boot.kernelPackages; [inputs.icebox.packages.x86_64-linux.samsung-galaxybook-extras];
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
       "acpi_backlight=vendor"

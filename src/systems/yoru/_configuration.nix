@@ -1,17 +1,20 @@
-{inputs, ...}: {
+{
+  inputs,
+  outPath,
+  lib,
+  ...
+}: {
   config = {
-    users.users.tahlon.group = "tahlon";
-    users.groups.tahlon = {};
-    users.users.tahlon.isSystemUser = true;
+    networking.networkmanager.enable = true;
+
+    services.tailscale = {
+      enable = true;
+    };
+
+    security.pam.services.hyprlock = {};
+
     frostbite = {
       display.design.theme = "${inputs.assets}/themes/nord.yaml";
-      # email.address = "tahlonbrahic@proton.me";
-      #home-assistant = {
-      #  enable = true;
-      #  email = "tahlonbrahic@proton.me";
-      #  domain = "home.brahic.family";
-      #  #fqdn = "hass.brahic.family";
-      #};
       support.laptop = {
         enable = true;
         enableHyprlandSupport = true;
@@ -22,13 +25,24 @@
         ];
       };
       security = {
+        secrets.defaultSopsFile = outPath + "/src/secrets/secrets.yaml";
         useCase = "laptop";
         yubikey.enable = true;
+        SELinux.enable = false;
       };
-      networking.firewall.enable = false;
-      users.accounts = [
-        "tahlon"
-      ];
+
+      networking = {
+        enable = false;
+        firewall.enable = false;
+        fail2ban.enable = false;
+      };
+
+      users.users = {
+        tahlon = {
+          isAdministrator = lib.mkForce true;
+        };
+        #test = {};
+      };
     };
   };
 }
