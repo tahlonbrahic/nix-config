@@ -5,6 +5,7 @@
   ...
 }: {
   config = {
+    system.includeBuildDependencies = lib.mkForce false;
     networking.networkmanager.enable = true;
 
     services.tailscale = {
@@ -20,6 +21,7 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDRUJCFyU2Bhag5GHGq2ihZL6LljX8EZygeKU6KDzHL8 tbrahic@proton.me"
         ];
       };
+      gaming.steam.enable = true;
       security = {
         secrets.defaultSopsFile = outPath + "/src/secrets/secrets.yaml";
         useCase = "workstation";
