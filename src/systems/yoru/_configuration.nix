@@ -5,13 +5,45 @@
   ...
 }: {
   config = {
+    services.samba = {
+      enable = true;
+      securityType = "user";
+      openFirewall = true;
+      settings = {
+        global = {
+          "workgroup" = "WORKGROUP";
+          "server string" = "smbnix";
+          "netbios name" = "smbnix";
+          "security" = "user";
+          "valid users" = "tahlon";
+          "hosts allow" = "192.168.1.91 127.0.0.1 localhost";
+          "hosts deny" = "0.0.0.0/0";
+          "guest account" = "nobody";
+          "map to guest" = "bad user";
+        };
+        "public" = {
+          "path" = "/home/tahlon/Documents";
+          "browseable" = "yes";
+          "read only" = "no";
+          "guest ok" = "yes";
+          "create mask" = "0644";
+          "directory mask" = "0755";
+          "force user" = "username";
+          "force group" = "groupname";
+        };
+      };
+    };
+
+    services.samba-wsdd = {
+      enable = true;
+      openFirewall = true;
+    };
+
     networking.networkmanager.enable = true;
 
     services.tailscale = {
       enable = true;
     };
-
-    security.pam.services.hyprlock = {};
 
     frostbite = {
       display.design.theme = "${inputs.assets}/themes/nord.yaml";
@@ -28,20 +60,16 @@
         secrets.defaultSopsFile = outPath + "/src/secrets/secrets.yaml";
         useCase = "laptop";
         yubikey.enable = true;
-        SELinux.enable = false;
       };
 
       networking = {
         enable = false;
-        firewall.enable = false;
-        fail2ban.enable = false;
       };
 
       users.users = {
         tahlon = {
           isAdministrator = lib.mkForce true;
         };
-        #test = {};
       };
     };
   };

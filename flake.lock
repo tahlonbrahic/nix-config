@@ -572,11 +572,11 @@
         "vostok": "vostok"
       },
       "locked": {
-        "lastModified": 1746499001,
-        "narHash": "sha256-fQzlC4hED75GrZxQmJnh7U1PTbbrJ/AI+71BwQwkD/c=",
+        "lastModified": 1747273616,
+        "narHash": "sha256-NpBvEV5f6MVXw8gRgHx6JGc9kI0eaCMpkzuwTuExCHc=",
         "owner": "cryomancy",
         "repo": "frostbite",
-        "rev": "4e747c0174c1f11fe74c7bae708bfb7fb1cf35ca",
+        "rev": "8a91df80fd70906a7371683032633d5a72f852e5",
         "type": "github"
       },
       "original": {
