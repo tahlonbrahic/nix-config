@@ -26,13 +26,10 @@
         secrets.defaultSopsFile = outPath + "/src/secrets/secrets.yaml";
         useCase = "workstation";
         yubikey.enable = false;
-        SELinux.enable = false;
       };
 
       networking = {
         enable = false;
-        firewall.enable = false;
-        fail2ban.enable = false;
       };
 
       users.users = {
