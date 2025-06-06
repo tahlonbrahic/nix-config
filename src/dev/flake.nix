@@ -5,7 +5,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
   };
 
   outputs = _: {};

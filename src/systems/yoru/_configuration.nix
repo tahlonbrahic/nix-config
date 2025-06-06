@@ -1,10 +1,12 @@
 {
   inputs,
   outPath,
+  pkgs,
   lib,
   ...
 }: {
   config = {
+    environment.systemPackages = with pkgs; [wl-gammarelay-applet iwgtk];
     services.samba = {
       enable = true;
       securityType = "user";
@@ -39,8 +41,6 @@
       openFirewall = true;
     };
 
-    networking.networkmanager.enable = true;
-
     services.tailscale = {
       enable = true;
     };
@@ -62,9 +62,7 @@
         yubikey.enable = true;
       };
 
-      networking = {
-        enable = false;
-      };
+      networks.enable = false;
 
       users.users = {
         tahlon = {

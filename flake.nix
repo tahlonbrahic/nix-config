@@ -33,7 +33,7 @@
       };
 
       perSystem = {system, ...}: {
-        formatter = inputs.nixpkgs.legacyPackages.${system}.alejandra;
+        formatter = inputs.frostbite.inputs.nixpkgs.legacyPackages.${system}.alejandra;
       };
 
       flake = {
