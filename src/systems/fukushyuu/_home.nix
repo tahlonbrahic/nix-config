@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   home-manager = {
     backupFileExtension = lib.mkForce "temp";
     users = {
@@ -23,6 +27,7 @@
           }
         '';
         stylix.targets.hyprpaper.enable = lib.mkForce false;
+        programs.obs-studio.plugins = with pkgs.obs-studio-plugins; [wlrobs];
         frostbite = {
           browser = {
             firefox.enable = true;
