@@ -6,7 +6,7 @@
   ...
 }: {
   config = {
-    environment.systemPackages = with pkgs; [wl-gammarelay-applet iwgtk];
+    environment.systemPackages = with pkgs; [wl-gammarelay-applet];
     services.samba = {
       enable = true;
       securityType = "user";
