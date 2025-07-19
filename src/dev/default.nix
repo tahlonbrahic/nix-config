@@ -56,6 +56,8 @@
       ];
       packages = [
         pkgs.typos
+        pkgs.sops
+        pkgs.git
       ];
     };
 

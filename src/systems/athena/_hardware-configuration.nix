@@ -14,6 +14,12 @@
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
+  system.includeBuildDependencies = lib.mkForce false;
+
+  networking = {
+    hostName = "yoru";
+  };
+
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/2f2296ef-c2d3-477f-bafc-548bfbae330b";
     fsType = "btrfs";

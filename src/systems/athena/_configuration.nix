@@ -6,7 +6,6 @@
 }: {
   config = {
     system.includeBuildDependencies = lib.mkForce false;
-    networking.networkmanager.enable = true;
 
     services.tailscale = {
       enable = true;
@@ -15,7 +14,9 @@
     security.pam.services.hyprlock = {};
 
     frostbite = {
-      display.design.theme = "${inputs.assets}/themes/nord.yaml";
+      display = {
+        design.theme = "${inputs.assets}/themes/nord.yaml";
+      };
       services.ssh = {
         publicKeys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDRUJCFyU2Bhag5GHGq2ihZL6LljX8EZygeKU6KDzHL8 tbrahic@proton.me"
@@ -26,18 +27,25 @@
         secrets.defaultSopsFile = outPath + "/src/secrets/secrets.yaml";
         useCase = "workstation";
         yubikey.enable = false;
-        SELinux.enable = false;
       };
 
-      networking = {
-        enable = false;
-        firewall.enable = false;
-        fail2ban.enable = false;
+      networks.wireless = {
+        enable = true;
+        additionalWhistelistedInterfaces = ["wlp7s0"];
+        home = {
+          SSID = "ATTp4pQVS2";
+          gateway = "192.168.1.254";
+          staticIP = "192.168.1.101";
+          pci = "pci-0000:07:00.0*";
+        };
       };
 
-      users.users = {
-        tahlon = {
-          isAdministrator = lib.mkForce true;
+      users = {
+        globalIntialPassword = "p";
+        users = {
+          tahlon = {
+            isAdministrator = lib.mkForce true;
+          };
         };
       };
     };

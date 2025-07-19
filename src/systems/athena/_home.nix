@@ -25,6 +25,7 @@
           };
           display.hyprland = {
             enable = true;
+            hypridle.enable = false;
           };
           security.keepassxc.enable = true;
         };
