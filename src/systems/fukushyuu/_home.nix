@@ -35,7 +35,7 @@
               userEmail = "tahlonbrahic@proton.me";
             };
             gpg.enable = false;
-	    obs-studio.enable = true;
+            obs-studio.enable = true;
           };
           display.hyprland = {
             enable = true;

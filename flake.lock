@@ -571,11 +571,25 @@
         "vostok": "vostok"
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1752715486,
         "narHash": "sha256-VE4CHRcQImcFiIpzwaSz8j+8ldxmaYWO+8BlMy3tx9s=",
+||||||| parent of 0204e3b (update shilo)
+        "lastModified": 1747273616,
+        "narHash": "sha256-NpBvEV5f6MVXw8gRgHx6JGc9kI0eaCMpkzuwTuExCHc=",
+=======
+        "lastModified": 1752969330,
+        "narHash": "sha256-J5O4rNfE9k8vhyskpve5W1fMzcG2KLSW7FypFuHNqX4=",
+>>>>>>> 0204e3b (update shilo)
         "owner": "cryomancy",
         "repo": "frostbite",
+<<<<<<< HEAD
         "rev": "112f6926783fdaae55ae2eb9d7cea47ab5a24229",
+||||||| parent of 0204e3b (update shilo)
+        "rev": "8a91df80fd70906a7371683032633d5a72f852e5",
+=======
+        "rev": "c959b0592a21ac227bf6c51b43a97bd56d75969b",
+>>>>>>> 0204e3b (update shilo)
         "type": "github"
       },
       "original": {

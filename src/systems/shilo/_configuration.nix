@@ -1,6 +1,7 @@
 {
   inputs,
   outPath,
+  pkgs,
   lib,
   ...
 }: {
@@ -8,6 +9,8 @@
     system.includeBuildDependencies = lib.mkForce false;
 
     security.pam.services.hyprlock = {};
+
+    environment.systemPackages = with pkgs; [celluloid vlc];
 
     frostbite = {
       display.design.theme = "${inputs.assets}/themes/nord.yaml";
@@ -19,19 +22,20 @@
       };
       security = {
         secrets.defaultSopsFile = outPath + "/src/secrets/secrets.yaml";
-        useCase = "workstation";
+        useCase = "laptop";
         yubikey.enable = false;
-        SELinux.enable = false;
       };
 
-      networking = {
-        enable = false;
-        firewall.enable = false;
+      support.laptop = {
+        enable = true;
+        enableHyprlandSupport = true;
       };
 
-      users.users = {
-        tahlon = {
-          isAdministrator = lib.mkForce true;
+      users = {
+        users = {
+          tahlon = {
+            isAdministrator = true;
+          };
         };
       };
     };

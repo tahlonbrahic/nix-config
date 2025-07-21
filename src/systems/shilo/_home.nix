@@ -1,23 +1,26 @@
 {lib, ...}: {
   home-manager = {
-    backupFileExtension = lib.mkForce "temp";
+    #backupFileExtension = lib.mkForce "temp";
     users = {
       "tahlon" = {
-                stylix.targets.hyprpaper.enable = lib.mkForce false;
+        stylix.targets.hyprpaper.enable = lib.mkForce false;
         frostbite = {
-browser = {
+          browser = {
             firefox.enable = true;
             chrome.enable = true;
           };
           programs = {
             git = {
-              enable = false;
+              enable = true;
               userName = "Tahlon Brahic";
               userEmail = "tbrahic@selecttechservices.com";
             };
             gpg.enable = false;
+            obsidian.enable = true;
+            vesktop.enable = false;
           };
-  display.hyprland = {
+
+          display.hyprland = {
             enable = true;
             displays.config = ''
               monitor = DP-1, 2560x1080, 1920x0, 1
@@ -25,10 +28,9 @@ browser = {
             '';
           };
 
-                  security.keepassxc.enable = true;
+          security.keepassxc.enable = true;
         };
       };
-
-         };
+    };
   };
 }
