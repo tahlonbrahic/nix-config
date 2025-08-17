@@ -7,8 +7,22 @@
   config = {
     system.includeBuildDependencies = lib.mkForce false;
 
-    services.tailscale = {
-      enable = true;
+    services = {
+      tailscale = {
+        enable = true;
+      };
+
+      inputplumber.enable = true;
+    };
+
+    programs = {
+      opengamepadui = {
+        enable = true;
+        #gamescopeSession = {
+        #  enable = true;
+        #};
+        #powerstation.enable = true;
+      };
     };
 
     security.pam.services.hyprlock = {};
@@ -22,6 +36,7 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDRUJCFyU2Bhag5GHGq2ihZL6LljX8EZygeKU6KDzHL8 tbrahic@proton.me"
         ];
       };
+      support.nvidia.enable = true;
       gaming.steam.enable = true;
       security = {
         secrets.defaultSopsFile = outPath + "/src/secrets/secrets.yaml";
@@ -35,7 +50,7 @@
         home = {
           SSID = "ATTp4pQVS2";
           gateway = "192.168.1.254";
-          staticIP = "192.168.1.101";
+          staticIP = "192.168.1.101/24";
           pci = "pci-0000:07:00.0*";
         };
       };

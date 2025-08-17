@@ -3,17 +3,6 @@
   pkgs,
   ...
 }: {
-  services.xserver.videoDrivers = ["nvidia"];
-  hardware = {
-    nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      open = false;
-      nvidiaSettings = true;
-    };
-  };
   systemd.tmpfiles.rules = [
     "Z /var/lib/hass/custom_components 770 hass hass - -"
     "f ${config.services.home-assistant.configDir}/automation.yaml 0755 hass hass"
