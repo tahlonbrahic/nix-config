@@ -8,7 +8,6 @@
     ./_configuration.nix
     ./_hardware-configuration.nix
     ./_addons.nix
-    ./_test.nix
   ];
 in
   inputs.frostbite.lib.systemTemplate {inherit extraModules system inputs outPath;}

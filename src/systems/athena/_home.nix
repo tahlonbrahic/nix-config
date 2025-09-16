@@ -1,14 +1,19 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   home-manager = {
     backupFileExtension = lib.mkForce "temp";
     users = {
       "tahlon" = {
-        wayland.windowManager.hyprland.extraConfig = ''
-          general {
-              col.active_border = rgba(F7DCDE39)
-              col.inactive_border = rgba(A58A8D30)
-          }
-        '';
+        #wayland.windowManager.hyprland.extraConfig = ''
+        #  general {
+        #      col.active_border = rgba(F7DCDE39)
+        #      col.inactive_border = rgba(A58A8D30)
+        #  }
+        #'';
+        home.packages = with pkgs; [prismlauncher];
         stylix.targets.hyprpaper.enable = lib.mkForce false;
         frostbite = {
           browser = {

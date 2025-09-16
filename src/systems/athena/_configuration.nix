@@ -8,9 +8,11 @@
     system.includeBuildDependencies = lib.mkForce false;
 
     services = {
-      tailscale = {
-        enable = true;
-      };
+      resolved.extraConfig = ''
+        [Resolve]
+        DNS=10.0.1.1
+        Domains=~family
+      '';
 
       inputplumber.enable = true;
     };
