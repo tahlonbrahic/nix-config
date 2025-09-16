@@ -62,8 +62,6 @@
         yubikey.enable = true;
       };
 
-      networks.enable = false;
-
       users.users = {
         tahlon = {
           isAdministrator = lib.mkForce true;
