@@ -2,7 +2,7 @@ keys:
   - &yoru age1jl5n7apeujqh8sjyjxrpr8hkg7l8fyp47f77sukw3ysvuqk8hykstm824g
   - &shilo age15cemxj9nm2cajs7l522zlcgwet0et4kvkyvd8uyaj4v9gx7lzcdsy2tvqm 
   - &fukushyuu age1wyzx73w2n3v8mwajrx7z7mj9mth9z40f88en6su99q0freakq3ws66mhjx
-  - &athena age1aul3zle6h0zdkqvdtyw9f52p3llkf508y3ea4mrps5vhk5f52gxqyhw3zn
+  - &athena age1c7vnpnm28jlv7k5k3d5h2xkrh89xcqeplh335k44x9gsd3rz7ucqgdfj0u
   #- &cursor age1yubikey1qtscgtcwefydpmemhm6kx0c42suyc5hfaaazv9nh0en2nk9jhf5sjhsapwn
 creation_rules:
   - path_regex: ^src/secrets/secrets\.yaml$
