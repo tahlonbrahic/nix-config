@@ -10,7 +10,7 @@
 
     security.pam.services.hyprlock = {};
 
-    environment.systemPackages = with pkgs; [celluloid vlc];
+    environment.systemPackages = with pkgs; [celluloid vlc dhcpcd];
 
     services = {
       resolved.extraConfig = ''
@@ -28,6 +28,7 @@
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJaAoWr+wZLiVmfTXCby8eriQ62jqqnqxCaenopHKwHY"
         ];
       };
+
       security = {
         secrets.defaultSopsFile = outPath + "/src/secrets/secrets.yaml";
         useCase = "laptop";
