@@ -7,7 +7,7 @@
     ./_home.nix
     ./_configuration.nix
     ./_hardware-configuration.nix
-    ./_dnu.nix
+    ./_addons.nix
   ];
 in
   inputs.frostbite.lib.systemTemplate {inherit extraModules system inputs outPath;}

@@ -12,12 +12,14 @@
         stylix.targets.hyprpaper.enable = lib.mkForce false;
         programs = {
           freetube.enable = true;
-          #git.riff.enable = true;
           lapce.enable = true;
-          script-directory.enable = true;
           sioyek.enable = true;
           wayprompt.enable = true;
           wlogout.enable = true;
+
+          script-directory = {
+            enable = true;
+          };
 
           zellij = {
             attachExistingSession = true;
