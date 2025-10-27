@@ -7,12 +7,6 @@
   networking.search = ["brahic.family"];
   systemd.network.networks."25-wireless".dns = lib.mkForce ["192.168.1.53" "1.1.1.1"];
   systemd.network.networks."25-wireless".domains = lib.mkForce ["brahic.family"];
-  services.resolved.extraConfig = ''
-      [Resolve]
-      DNS=192.168.1.53
-      Domains=~brahic.family
-    DNSStubListener=no
-  '';
   services.resolved.dnssec = lib.mkForce "false";
   frostbite.networks.wireless = {
     enable = true;
@@ -24,5 +18,5 @@
     };
   };
   programs.winbox.enable = true;
-  environment.systemPackages = with pkgs; [bottles];
+  environment.systemPackages = with pkgs; [bottles wireguard-ui reaper];
 }

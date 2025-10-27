@@ -12,6 +12,14 @@
 
     environment.systemPackages = with pkgs; [celluloid vlc];
 
+    services = {
+      resolved.extraConfig = ''
+        [Resolve]
+        DNS=10.0.1.1
+        Domains=~family
+      '';
+    };
+
     frostbite = {
       display.design.theme = "${inputs.assets}/themes/nord.yaml";
       services.ssh = {
