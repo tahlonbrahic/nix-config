@@ -20,7 +20,7 @@
   system.includeBuildDependencies = lib.mkForce false;
 
   networking = {
-    hostName = "yoru";
+    hostName = "athena";
   };
 
   fileSystems."/" = {

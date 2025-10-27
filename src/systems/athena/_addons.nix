@@ -17,7 +17,15 @@
     ];
   };
 
+  services.logind = {
+    powerKey = "ignore";
+    rebootKey = "ignore";
+    hibernateKey = "ignore";
+  };
+
   services.matter-server.enable = true;
+
+  virtualisation.spiceUSBRedirection.enable = true;
 
   programs.kdeconnect.enable = true;
 
@@ -49,5 +57,7 @@
     secretsConfigFile = "/var/lib/zwave/secrets";
   };
 
-  environment.systemPackages = with pkgs; [drawio];
+  environment.systemPackages = with pkgs; [drawio quickemu];
+
+  services.pcscd.enable = true;
 }

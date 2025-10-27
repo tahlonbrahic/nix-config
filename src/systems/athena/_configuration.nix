@@ -17,6 +17,9 @@
       inputplumber.enable = true;
     };
 
+    networking.nameservers = lib.mkForce ["10.0.1.1"];
+    #systemd.network.networks."25-wireless".dns = lib.mkForce ["10.0.1.1"];
+
     programs = {
       opengamepadui = {
         enable = true;
@@ -49,12 +52,7 @@
       networks.wireless = {
         enable = true;
         additionalWhistelistedInterfaces = ["wlp7s0"];
-        home = {
-          SSID = "ATTp4pQVS2";
-          gateway = "192.168.1.254";
-          staticIP = "192.168.1.101/24";
-          pci = "pci-0000:07:00.0*";
-        };
+        pci = "pci-0000:07:00.0*";
       };
 
       users = {
