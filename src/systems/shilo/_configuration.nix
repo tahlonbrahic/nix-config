@@ -20,6 +20,8 @@
       '';
     };
 
+    users.users.tahlon.hashedPassword = lib.mkForce "$y$j9T$i1JVbvAcAMdJWbai7DbQw/$1vMC5R29DUcepcCZlUjhch0E6E5OwbKi8jZJI3e2s3D";
+
     frostbite = {
       display.design.theme = "${inputs.assets}/themes/nord.yaml";
       services.ssh = {

@@ -40,20 +40,20 @@
 
         home.packages = [pkgs.ashell];
 
-        systemd.user.services.ashell = {
-          Unit = {
-            Description = "ashell status bar";
-            Documentation = "https://github.com/MalpenZibo/ashell/tree/0.4.1";
-            After = ["hyprland-session.target"];
-          };
+        #systemd.user.services.ashell = {
+        #  Unit = {
+        #    Description = "ashell status bar";
+        #    Documentation = "https://github.com/MalpenZibo/ashell/tree/0.4.1";
+        #    After = ["hyprland-session.target"];
+        #  };
 
-          Service = {
-            ExecStart = "${lib.getExe pkgs.ashell}";
-            Restart = "on-failure";
-          };
+        #  Service = {
+        #    ExecStart = "${lib.getExe pkgs.ashell}";
+        #    Restart = "on-failure";
+        #  };
 
-          Install.WantedBy = ["hyprland-session.target"];
-        };
+        #  Install.WantedBy = ["hyprland-session.target"];
+        #};
         frostbite = {
           browser = {
             firefox.enable = true;
@@ -72,11 +72,11 @@
 
           display.hyprland = {
             enable = true;
-            waybar.enable = false;
-            displays.config = ''
-              monitor = DP-1, 2560x1080, 1920x0, 1
-              monitor = HDMI-A-1, 1920x1080, 0x0, 1, transform, 3
-            '';
+            #waybar.enable = false;
+            #displays.config = ''
+            #  monitor = DP-1, 2560x1080, 1920x0, 1
+            #  monitor = HDMI-A-1, 1920x1080, 0x0, 1, transform, 3
+            #'';
           };
 
           security.keepassxc.enable = true;
