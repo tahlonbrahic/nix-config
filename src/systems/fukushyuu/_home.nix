@@ -20,12 +20,6 @@
       };
 
       "amy" = {
-        wayland.windowManager.hyprland.extraConfig = ''
-          general {
-              col.active_border = rgba(F7DCDE39)
-              col.inactive_border = rgba(A58A8D30)
-          }
-        '';
         stylix.targets.hyprpaper.enable = lib.mkForce false;
         programs.obs-studio.plugins = with pkgs.obs-studio-plugins; [wlrobs];
         frostbite = {
@@ -41,9 +35,10 @@
             };
             gpg.enable = false;
             obs-studio.enable = true;
+            #vesktop.enable = true;
           };
           display.hyprland = {
-            enable = true;
+            enable = false;
             displays.config = ''
               monitor = DP-1, 2560x1080, 1920x0, 1
               monitor = HDMI-A-1, 1920x1080, 0x0, 1, transform, 3

@@ -12,8 +12,6 @@
       enable = true;
     };
 
-    security.pam.services.hyprlock = {};
-
     frostbite = {
       display.design.theme = "${inputs.assets}/themes/nord.yaml";
       services.ssh = {
@@ -26,10 +24,6 @@
         secrets.defaultSopsFile = outPath + "/src/secrets/secrets.yaml";
         useCase = "workstation";
         yubikey.enable = false;
-      };
-
-      networking = {
-        enable = false;
       };
 
       users.users = {
