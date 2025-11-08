@@ -57,7 +57,7 @@
     secretsConfigFile = "/var/lib/zwave/secrets";
   };
 
-  environment.systemPackages = with pkgs; [drawio quickemu];
+  environment.systemPackages = with pkgs; [drawio quickemu satisfactorymodmanager cura-appimage arduino openscad blender librecad];
 
   services.pcscd.enable = true;
 }
