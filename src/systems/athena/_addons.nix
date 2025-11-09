@@ -4,18 +4,18 @@
   ...
 }: {
   # mqtt for home-assistant
-  services.mosquitto = {
-    enable = true;
-
-    # unsafe but for testing
-    listeners = [
-      {
-        acl = ["pattern readwrite #"];
-        omitPasswordAuth = true;
-        settings.allow_anonymous = true;
-      }
-    ];
-  };
+  #services.mosquitto = {
+  #  enable = true;
+  #
+  #  # unsafe but for testing
+  #  listeners = [
+  #    {
+  #      acl = ["pattern readwrite #"];
+  #      omitPasswordAuth = true;
+  #      settings.allow_anonymous = true;
+  #    }
+  #  ];
+  #};
 
   services.logind = {
     powerKey = "ignore";
@@ -23,7 +23,7 @@
     hibernateKey = "ignore";
   };
 
-  services.matter-server.enable = true;
+  #services.matter-server.enable = true;
 
   virtualisation.spiceUSBRedirection.enable = true;
 
@@ -51,13 +51,14 @@
     };
   };
 
-  services.zwave-js = {
-    enable = true;
-    serialPort = "/dev/ttyACM0";
-    secretsConfigFile = "/var/lib/zwave/secrets";
-  };
+  # services.zwave-js = {
+  #   enable = true;
+  #   serialPort = "/dev/ttyACM0";
+  #   secretsConfigFile = "/var/lib/zwave/secrets";
+  # };
 
-  environment.systemPackages = with pkgs; [drawio quickemu satisfactorymodmanager cura-appimage arduino openscad blender librecad];
+  environment.systemPackages = with pkgs; [drawio quickemu satisfactorymodmanager cura-appimage arduino openscad blender librecad chromium];
 
   services.pcscd.enable = true;
+  users.users.tahlon.extraGroups = ["dialout"];
 }
