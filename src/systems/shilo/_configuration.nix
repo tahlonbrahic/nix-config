@@ -10,14 +10,22 @@
 
     security.pam.services.hyprlock = {};
 
-    environment.systemPackages = with pkgs; [celluloid vlc dhcpcd];
+    environment.systemPackages = with pkgs; [celluloid vlc dhcpcd gdb cgdb bic];
 
-    services = {
-      resolved.extraConfig = ''
-        [Resolve]
-        DNS=10.0.1.1
-        Domains=~family
-      '';
+    #services = {
+    # resolved.extraConfig = ''
+    #   [Resolve]
+    #   DNS=10.0.1.1
+    #   Domains=~family
+    # '';
+    #};
+
+    services.fprintd = {
+      enable = true;
+      tod = {
+        enable = true;
+        driver = pkgs.libfprint-2-tod1-goodix;
+      };
     };
 
     users.users.tahlon.hashedPassword = lib.mkForce "$y$j9T$i1JVbvAcAMdJWbai7DbQw/$1vMC5R29DUcepcCZlUjhch0E6E5OwbKi8jZJI3e2s3D";

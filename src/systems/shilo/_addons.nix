@@ -1,11 +1,14 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: {
   nix = {
     settings.substituters = lib.mkForce ["https://cache.nixos.org/"];
   };
+
+  environment.systemPackages = with pkgs; [janet emacs ocaml];
 
   services = {
     thermald.enable = true;
@@ -104,7 +107,7 @@
 
   networking = {
     enableIPv6 = false;
-    hostName = builtins.readFile config.sops.secrets.whn.path;
+    hostName = builtins.readFile "${config.sops.secrets.whn.path}";
     networkmanager = {
       enable = true;
     };
