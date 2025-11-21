@@ -1,15 +1,9 @@
+{ pkgs, ... }:
 {
-  lib,
-  pkgs,
-  ...
-}: {
   home-manager = {
-    backupFileExtension = lib.mkForce "temp";
     users = {
       "tahlon" = {
-        home.pointerCursor.size = 2;
-        home.packages = with pkgs; [multivnc];
-        stylix.targets.hyprpaper.enable = lib.mkForce false;
+        home.packages = with pkgs; [ multivnc ];
         frostbite = {
           browser.firefox.enable = true;
           programs = {
@@ -19,9 +13,6 @@
               userEmail = "tahlonbrahic@proton.me";
             };
             gpg.enable = false;
-          };
-          display.hyprland = {
-            enable = true;
           };
           security.keepassxc.enable = true;
         };
