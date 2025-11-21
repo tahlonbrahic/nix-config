@@ -3,12 +3,18 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   nix = {
-    settings.substituters = lib.mkForce ["https://cache.nixos.org/"];
+    settings.substituters = lib.mkForce [ "https://cache.nixos.org/" ];
   };
 
-  environment.systemPackages = with pkgs; [janet emacs ocaml];
+  environment.systemPackages = with pkgs; [
+    janet
+    emacs
+    ocaml
+    networkmanagerapplet
+  ];
 
   services = {
     thermald.enable = true;
@@ -100,10 +106,12 @@
     };
   };
 
-  virtualisation.libvirtd.allowedBridges = lib.lists.genList (x: "br" + "${(builtins.toString x)}") 1000;
+  virtualisation.libvirtd.allowedBridges = lib.lists.genList (
+    x: "br" + "${(builtins.toString x)}"
+  ) 1000;
 
   # has to be built onetime first?
-  sops.secrets.whn = {};
+  sops.secrets.whn = { };
 
   networking = {
     enableIPv6 = false;
@@ -111,9 +119,9 @@
     networkmanager = {
       enable = true;
     };
-    wireless = {
-      iwd.enable = true;
-    };
+    #wireless = {
+    #  iwd.enable = true;
+    #};
 
     firewall.enable = false;
   };

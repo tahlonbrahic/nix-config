@@ -4,18 +4,15 @@
   pkgs,
   inputs,
   ...
-}: {
+}:
+{
   home-manager = {
-    #backupFileExtension = lib.mkForce "temp";
     users = {
       "tahlon" = {
-        stylix.targets.hyprpaper.enable = lib.mkForce false;
         programs = {
           freetube.enable = true;
           lapce.enable = true;
           sioyek.enable = true;
-          wayprompt.enable = true;
-          wlogout.enable = true;
 
           script-directory = {
             enable = true;
@@ -38,7 +35,7 @@
           #};
         };
 
-        home.packages = [pkgs.ashell];
+        home.packages = [ pkgs.nwg-displays ];
 
         #systemd.user.services.ashell = {
         #  Unit = {
@@ -54,9 +51,19 @@
 
         #  Install.WantedBy = ["hyprland-session.target"];
         #};
+        hydenix.hm.hyprland = {
+          monitors.overrideConfig = lib.mkForce ''
+            monitor=eDP-1,1920x1080@60.05,1920x480,1.5
+            monitor=DP-1,1920x1200@59.95,0x0,1.0
+          '';
+        };
+
+	hydenix.hm.shell.zsh.enable = lib.mkForce false;
+	hydenix.hm.shell.fish.enable = lib.mkForce true;
+
         frostbite = {
           browser = {
-            firefox.enable = true;
+            librewolf.enable = true;
             chrome.enable = true;
           };
           programs = {
@@ -69,15 +76,7 @@
             obsidian.enable = true;
             vesktop.enable = false;
           };
-
-          display.hyprland = {
-            enable = true;
-            #waybar.enable = false;
-            #displays.config = ''
-            #  monitor = DP-1, 2560x1080, 1920x0, 1
-            #  monitor = HDMI-A-1, 1920x1080, 0x0, 1, transform, 3
-            #'';
-          };
+	  utils.cli.enable = false;
 
           security.keepassxc.enable = true;
         };

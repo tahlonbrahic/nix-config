@@ -4,21 +4,19 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   config = {
     system.includeBuildDependencies = lib.mkForce false;
 
-    security.pam.services.hyprlock = {};
-
-    environment.systemPackages = with pkgs; [celluloid vlc dhcpcd gdb cgdb bic];
-
-    #services = {
-    # resolved.extraConfig = ''
-    #   [Resolve]
-    #   DNS=10.0.1.1
-    #   Domains=~family
-    # '';
-    #};
+    environment.systemPackages = with pkgs; [
+      celluloid
+      vlc
+      dhcpcd
+      gdb
+      cgdb
+      bic
+    ];
 
     services.fprintd = {
       enable = true;
@@ -28,6 +26,14 @@
       };
     };
 
+    nixpkgs.overlays = [
+      (final: prev: {
+        swt = prev.swt.override {
+          postPatch = "sed -i '/^CFLAGS += -Werror$/d' library/make_linux.mak";
+          NIX_CFLAGS_COMPILE = "-Wno-error";
+        };
+      })
+    ];
     users.users.tahlon.hashedPassword = lib.mkForce "$y$j9T$i1JVbvAcAMdJWbai7DbQw/$1vMC5R29DUcepcCZlUjhch0E6E5OwbKi8jZJI3e2s3D";
 
     frostbite = {
