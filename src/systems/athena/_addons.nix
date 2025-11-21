@@ -57,7 +57,8 @@
   #   secretsConfigFile = "/var/lib/zwave/secrets";
   # };
 
-  environment.systemPackages = with pkgs; [drawio quickemu satisfactorymodmanager cura-appimage arduino openscad blender librecad chromium];
+  services.mullvad-vpn.enable = true;
+  environment.systemPackages = with pkgs; [drawio quickemu satisfactorymodmanager cura-appimage arduino openscad blender librecad chromium monero-gui xmrig tor-browser];
 
   services.pcscd.enable = true;
   users.users.tahlon.extraGroups = ["dialout"];

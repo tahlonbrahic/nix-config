@@ -50,9 +50,9 @@
       };
 
       networks.wireless = {
-        enable = true;
+        enable = false;
         additionalWhistelistedInterfaces = ["wlp7s0"];
-        pci = "pci-0000:07:00.0*";
+        home.pci = "pci-0000:07:00.0*";
       };
 
       users = {
