@@ -2,22 +2,24 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   home-manager = {
     backupFileExtension = lib.mkForce "temp";
     users = {
       "tahlon" = {
-        #wayland.windowManager.hyprland.extraConfig = ''
-        #  general {
-        #      col.active_border = rgba(F7DCDE39)
-        #      col.inactive_border = rgba(A58A8D30)
-        #  }
-        #'';
-        home.packages = with pkgs; [prismlauncher];
-        stylix.targets.hyprpaper.enable = lib.mkForce false;
+        services.syncthing = {
+          enable = true;
+          tray.enable = true;
+        };
+        home.packages = with pkgs; [
+          prismlauncher
+          limo
+          blueman
+        ];
         frostbite = {
           browser = {
-            firefox.enable = true;
+            librewolf.enable = true;
           };
           programs = {
             git = {
@@ -27,10 +29,6 @@
             };
             gpg.enable = false;
             obs-studio.enable = true;
-          };
-          display.hyprland = {
-            enable = true;
-            hypridle.enable = false;
           };
           security.keepassxc.enable = true;
         };

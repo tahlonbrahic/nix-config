@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   # mqtt for home-assistant
   #services.mosquitto = {
   #  enable = true;
@@ -16,6 +17,7 @@
   #    }
   #  ];
   #};
+  services.openssh.enable = true;
 
   services.logind = {
     powerKey = "ignore";
@@ -30,7 +32,7 @@
   programs.kdeconnect.enable = true;
 
   services.syncthing = {
-    enable = true;
+    enable = false;
     user = "syncthing";
     group = "users";
     dataDir = "/var/lib/syncthing";
@@ -58,8 +60,32 @@
   # };
 
   services.mullvad-vpn.enable = true;
-  environment.systemPackages = with pkgs; [drawio quickemu satisfactorymodmanager cura-appimage arduino openscad blender librecad chromium monero-gui xmrig tor-browser];
+  environment.systemPackages = with pkgs; [
+    drawio
+    quickemu
+    satisfactorymodmanager
+    cura-appimage
+    arduino
+    openscad
+    blender
+    librecad
+    chromium
+    monero-gui
+    xmrig
+    tor-browser
+    wineWowPackages.stable
+    wineWowPackages.waylandFull
+    winetricks
+    protontricks
+    vesktop
+    (lutris.override {
+      extraLibraries = pkgs: [
+        libproxy
+        glib-networking
+      ];
+    })
+  ];
 
   services.pcscd.enable = true;
-  users.users.tahlon.extraGroups = ["dialout"];
+  users.users.tahlon.extraGroups = [ "dialout" ];
 }
