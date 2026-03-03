@@ -17,12 +17,6 @@
           script-directory = {
             enable = true;
           };
-
-          zellij = {
-            attachExistingSession = true;
-            enableFishIntegration = lib.mkDefault true;
-            exitShellOnExit = true;
-          };
         };
 
         services = {
@@ -51,20 +45,10 @@
 
         #  Install.WantedBy = ["hyprland-session.target"];
         #};
-        hydenix.hm.hyprland = {
-          monitors.overrideConfig = lib.mkForce ''
-            monitor=eDP-1,1920x1080@60.05,1920x480,1.5
-            monitor=DP-1,1920x1200@59.95,0x0,1.0
-          '';
-        };
-
-	hydenix.hm.shell.zsh.enable = lib.mkForce false;
-	hydenix.hm.shell.fish.enable = lib.mkForce true;
-
+       
         frostbite = {
           browser = {
             librewolf.enable = true;
-            chrome.enable = true;
           };
           programs = {
             git = {
@@ -76,7 +60,7 @@
             obsidian.enable = true;
             vesktop.enable = false;
           };
-	  utils.cli.enable = false;
+          utils.cli.enable = false;
 
           security.keepassxc.enable = true;
         };

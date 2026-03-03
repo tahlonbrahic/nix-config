@@ -7,8 +7,9 @@
 }:
 {
   config = {
+    virtualisation.lxc.enable = true;
     system.includeBuildDependencies = lib.mkForce false;
-
+    programs.fish.enable = true;
     environment.systemPackages = with pkgs; [
       celluloid
       vlc
@@ -16,6 +17,8 @@
       gdb
       cgdb
       bic
+      zig
+      gh
     ];
 
     services.fprintd = {
@@ -26,24 +29,16 @@
       };
     };
 
-    nixpkgs.overlays = [
-      (final: prev: {
-        swt = prev.swt.override {
-          postPatch = "sed -i '/^CFLAGS += -Werror$/d' library/make_linux.mak";
-          NIX_CFLAGS_COMPILE = "-Wno-error";
-        };
-      })
-    ];
     users.users.tahlon.hashedPassword = lib.mkForce "$y$j9T$i1JVbvAcAMdJWbai7DbQw/$1vMC5R29DUcepcCZlUjhch0E6E5OwbKi8jZJI3e2s3D";
 
     frostbite = {
-      display.design.theme = "${inputs.assets}/themes/nord.yaml";
-      services.ssh = {
-        publicKeys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDRUJCFyU2Bhag5GHGq2ihZL6LljX8EZygeKU6KDzHL8 tbrahic@proton.me"
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJaAoWr+wZLiVmfTXCby8eriQ62jqqnqxCaenopHKwHY"
-        ];
-      };
+      #  services.ssh = {
+      #    publicKeys = [
+      #      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDRUJCFyU2Bhag5GHGq2ihZL6LljX8EZygeKU6KDzHL8 tbrahic@proton.me"
+      #      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJaAoWr+wZLiVmfTXCby8eriQ62jqqnqxCaenopHKwHY"
+      #    ];
+      #  };
+      networking.bluetooth.enable = false;
 
       security = {
         secrets.defaultSopsFile = outPath + "/src/secrets/secrets.yaml";

@@ -14,9 +14,22 @@
     emacs
     ocaml
     networkmanagerapplet
+    blueman
+    fscryptctl
+    fscrypt-experimental
+  ];
+
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
+  services.atftpd.enable = true;
+  services.atftpd.extraOptions = [
+    "--bind-address 192.168.100.15"
+    "--verbose=7"
   ];
 
   services = {
+    pcscd.enable = true;
     thermald.enable = true;
     tlp = {
       enable = true;
@@ -39,7 +52,16 @@
     };
   };
 
-  virtualisation.docker.enable = false;
+  virtualisation = {
+    oci-containers = {
+      backend = "podman";
+      #containers = {
+      #  "authentik-test" = {
+      #image = "authentik/server:latest";
+      #  };
+      #};
+    };
+  };
 
   systemd.network = {
     enable = true;
@@ -109,6 +131,16 @@
   virtualisation.libvirtd.allowedBridges = lib.lists.genList (
     x: "br" + "${(builtins.toString x)}"
   ) 1000;
+
+  services.gollum = {
+    enable = true;
+    port = 8080;
+    math = true;
+    branch = "master";
+    allowUploads = "dir";
+    address = "0.0.0.0";
+    user-icons = "gravatar";
+  };
 
   # has to be built onetime first?
   sops.secrets.whn = { };
