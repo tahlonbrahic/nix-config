@@ -32,3 +32,12 @@ sudo nixos-rebuild switch --flake .#hostname
 ```
 
 Replace `hostname` with the appropriate hostname configured in ./outputs/architecture/src/hostname.nix
+
+
+### Tips
+I personally place my config in /home/{my username}/.config/nixos
+and symlink it to /etc/nixos with:
+
+```bash
+sudo ln -sf /home/tahlon/.config/nixos /etc/nixos
+```
