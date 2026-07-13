@@ -9,7 +9,11 @@
     settings.substituters = lib.mkForce [ "https://cache.nixos.org/" ];
   };
 
+  virtualisation.libvirtd.qemu.swtpm.enable = true;
+
   environment.systemPackages = with pkgs; [
+    vscodium
+    zig
     janet
     emacs
     ocaml
@@ -17,6 +21,9 @@
     blueman
     fscryptctl
     fscrypt-experimental
+    meld
+    chromium
+    freecad
   ];
 
   hardware.bluetooth.enable = true;

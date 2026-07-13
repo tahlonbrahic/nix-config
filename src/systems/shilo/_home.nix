@@ -17,6 +17,21 @@
           script-directory = {
             enable = true;
           };
+
+          librewolf = {
+            profiles = {
+              i2p = {
+                id = 1;
+                name = "i2p";
+                settings = {
+                  "dom.security.https_only_mode_ever_enabled" = false;
+                  "network.proxy.socks_port" = 4447;
+                  "network.proxy.http_port" = 4444;
+                  "keyword.enabled" = true;
+                };
+              };
+            };
+          };
         };
 
         services = {
@@ -45,7 +60,7 @@
 
         #  Install.WantedBy = ["hyprland-session.target"];
         #};
-       
+
         frostbite = {
           browser = {
             librewolf.enable = true;
